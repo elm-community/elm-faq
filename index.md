@@ -34,7 +34,7 @@ attached), and `type alias` gives a name to an existing type.
 ### Why does elm-repl (or elm-make) report "cannot find module 'Html'"?
 You need to install the Html module:
 
-    elm package install evancz/elm-html
+    elm package install elm-lang/elm-html
 
 Several modules are [available by default](http://package.elm-lang.org/packages/elm-lang/core/latest) in the base Elm tools but other common modules like Html have to be installed in the working directory before they can be used in elm-make, elm-repl, and elm-reactor.
 
