@@ -89,6 +89,11 @@ Note: Operators cannot be defined in elm-repl.
 
 
 
+### What does `!` mean?
+The exclamation operator is defined in the [Platform.Cmd](http://package.elm-lang.org/packages/elm-lang/core/4.0.5/Platform-Cmd#!) core module. It's defined as `(!) model cmds = (model, Cmd.batch cmds)`, so it's just shorthand for when you don't want to type `Cmd.batch` inside a tuple. Sometimes, it's used with an empty list: `model ! []`, which is the same as `(model, Cmd.batch [])`, which is the same as `(model, Cmd.none)`.
+
+
+
 ### What's the difference between `Html Msg` and `Html msg`?
 `msg` is a placeholder used when the HTML doesn't send any messages of type `Msg` (as in `type Msg = ...`). This is just as `a` is used as a placeholder in `List a` when the list is of any type, rather than of strings (`List String`) or integers (`List Int`) etc.. `msg` means "message of any type".
 
@@ -228,7 +233,7 @@ The [Elm Json Decode interpreter](http://simonh1000.github.io/decoder/) is an on
 If you have a JS object, you have to tell Elm what types its values have. You can use a type alias to do this. So, for a [BigRational](https://github.com/peterolson/BigRational.js):
 
 ```elm
-type alias BigRational = 
+type alias BigRational =
     { num : { value : Int, sign : Bool, isSmall : Bool }
     , numerator : { value : Int, sign : Bool, isSmall : Bool }
     , denom : { value : Int, sign : Bool, isSmall : Bool }
@@ -272,17 +277,17 @@ in the Elm program itself. Here is an example (thanks to @pdamoc):
 
 ```elm
 import Html exposing (..)
-import Html.Attributes exposing (..) 
+import Html.Attributes exposing (..)
 
-withStyle html = 
+withStyle html =
   div []
-  [ node "style" [type' "text/css"] 
+  [ node "style" [type' "text/css"]
     [text "@import url(https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.min.css)"]
   , html
   ]
 
 main =
-  div [] 
+  div []
     [ a [class "button is-primary"] [text "Primary"]
     , a [class "button is-info"] [text "Info"]
     ]
@@ -487,4 +492,3 @@ This is why APIs generally expose `Task` instances rather than `Cmd`:  so you ca
 [^task-chaining]: From rtfeldman's #elm-dev Slack posting, 2016-05-16.
 
 ## Footnotes
-
