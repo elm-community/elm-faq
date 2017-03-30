@@ -466,6 +466,18 @@ updateHelp foo int =
   { foo | bar = int }
 ```
 
+### How can I pattern match a record and its values at the same time?
+
+You can use a special notation in function definition to pattern match a record and its values at the same time:
+
+```haskell
+changeFooBar ({foo} as model) =
+  { model | foo = { foo | bar = 2 } }
+```
+
+See this [post](https://medium.com/elm-shorts/intro-to-records-in-elm-51bc5e933a57)
+
+
 ### Where are the `Cmd` and `Sub` types defined?
 
 They are defined in the core
