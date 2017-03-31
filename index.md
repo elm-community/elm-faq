@@ -258,12 +258,10 @@ The [Elm Json Decode interpreter](http://simonh1000.github.io/decoder/) is an on
 You have to declare the type of each of its values.
 
 ```elm
-port outgoing : { stringValue : String, floatValue : Float } -> Cmd msg
+port outgoing : { floatValue : Float, stringValue : String } -> Cmd msg
 
-port incoming : ({ stringValue : String, intValue : Int } -> msg) -> Sub msg
+port incoming : ({ intValue : Int, stringValue : String } -> msg) -> Sub msg
 ```
-
-Or you can use a type alias, of course.
 
 ### How can I report a compiler error message that could be better?
 
