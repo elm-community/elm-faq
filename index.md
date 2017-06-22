@@ -81,13 +81,6 @@ which gets special treatment from the compiler to provide additional information
 If you need to switch between multiple versions of elm, consider [elmenv](https://github.com/sonnym/elmenv).
 
 
-
-### What does `=>` mean?
-A common idiom is to define the `(=>)` operator as a synonym for the `(,)` operator that constructs tuples (see just below). This makes a shorthand for long lists of tuple pairs, often used with the Html.style property.  So `["color" => "red", "padding" => "2px"]` means `[("color", "red"), ("padding", "2px")]`.
-
-Note: Operators cannot be defined in elm-repl.
-
-
 ### What does `(,)` mean?
 
 `(,)` is the tuple-forming operator in prefix form[^tupleInfix].
@@ -149,16 +142,16 @@ See also [Basics.elm](https://github.com/elm-lang/core/blob/master/src/Basics.el
 You can compile multiple modules into a single elm.js and then instantiate whatever module you need on the appropriate div. [^multipleModules]  For example, bundle multiple main programs (without duplicating any code) into a single elm.js like this:
 
 	elm-make Header.elm Footer.elm Login.elm --output=elm.js
-	
+
 and then use them like this:
 
 	var headernode = document.getElementById('header');
 	var footernode = document.getElementById('footer');
 	var loginnode = document.getElementById('login');
 
-	Elm.Header.embed(headernode); 
-	Elm.Footer.embed(footernode); 
-	Elm.Login.embed(loginnode);  
+	Elm.Header.embed(headernode);
+	Elm.Footer.embed(footernode);
+	Elm.Login.embed(loginnode);
 
 [^multipleModules]: Use of multiple main modules in one application is discussed
     [here](https://groups.google.com/d/msg/elm-discuss/eEJgNnl99ps/keWXnn1KCwAJ)
@@ -299,17 +292,17 @@ in the Elm program itself. Here is an example (thanks to @pdamoc):
 
 ```elm
 import Html exposing (..)
-import Html.Attributes exposing (..) 
+import Html.Attributes exposing (..)
 
-withStyle html = 
+withStyle html =
   div []
-  [ node "style" [type' "text/css"] 
+  [ node "style" [type' "text/css"]
     [text "@import url(https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.min.css)"]
   , html
   ]
 
 main =
-  div [] 
+  div []
     [ a [class "button is-primary"] [text "Primary"]
     , a [class "button is-info"] [text "Info"]
     ]
@@ -504,12 +497,12 @@ Any module using ports must start with `port module` on the first line.
 The following function constructs a Cmd value from a message:
 
 ```haskell
-message : msg -> Cmd msg 
-message msg = 
+message : msg -> Cmd msg
+message msg =
     Task.perform identity (Task.succeed msg)
 ```
 
-However, this is often unnecessary. To handle a message produced by a call to `update` you may pass it straight back to `update` recursively. The package [ccapndave/elm-update-extra](http://package.elm-lang.org/packages/ccapndave/elm-update-extra/latest) provides helper functions for implementing this approach elegantly. 
+However, this is often unnecessary. To handle a message produced by a call to `update` you may pass it straight back to `update` recursively. The package [ccapndave/elm-update-extra](http://package.elm-lang.org/packages/ccapndave/elm-update-extra/latest) provides helper functions for implementing this approach elegantly.
 
 The latter approach is likely to be more efficient in most cases. The former option may be attractive when recursive calls to `update` could cause an infinite loop, or for authors of reusable components interested in creating a clean encapsulation of their library's internal behavior.
 
@@ -548,11 +541,11 @@ And for a fully worked example of a simple SPA, see [Richard Feldman's Elm imple
 
 ### What is "elm-community"?
 
-See the [Elm-community Manifesto](https://github.com/elm-community/Manifesto#mandate). The elm-community organization came about when some useful packages were no longer being maintained by their creators. The organization formed to make a new home for those packages. Elm-community packages are not inherently more reliable than others but are perhaps more likely to be supported in the long run. Elm-community packages are not a staging area for core. 
+See the [Elm-community Manifesto](https://github.com/elm-community/Manifesto#mandate). The elm-community organization came about when some useful packages were no longer being maintained by their creators. The organization formed to make a new home for those packages. Elm-community packages are not inherently more reliable than others but are perhaps more likely to be supported in the long run. Elm-community packages are not a staging area for core.
 
-### Can Elm be used when developing with SEO in mind? 
+### Can Elm be used when developing with SEO in mind?
 
-Most crawlers should work fine with Elm rendered pages. Follow general [recommendations for JavaScript sites](https://plus.google.com/u/0/+JohnMueller/posts/LT4fU7kFB8W) (please note that, even if Googlebot does not support requestAnimationFrame, Elm's fallback handles most cases just fine). If you want to support crawlers that don't support any JS, investigate using [elm-server-side-renderer](https://github.com/eeue56/elm-server-side-renderer).  
+Most crawlers should work fine with Elm rendered pages. Follow general [recommendations for JavaScript sites](https://plus.google.com/u/0/+JohnMueller/posts/LT4fU7kFB8W) (please note that, even if Googlebot does not support requestAnimationFrame, Elm's fallback handles most cases just fine). If you want to support crawlers that don't support any JS, investigate using [elm-server-side-renderer](https://github.com/eeue56/elm-server-side-renderer).
 
 ### What does the name "Elm" stand for?
 
@@ -563,4 +556,3 @@ See this [elm-discuss message](https://groups.google.com/forum/#!msg/elm-discuss
 
 
 ## Notes
-
