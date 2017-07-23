@@ -149,15 +149,15 @@ See also [Basics.elm](https://github.com/elm-lang/core/blob/master/src/Basics.el
 You can compile multiple modules into a single elm.js and then instantiate whatever module you need on the appropriate div. [^multipleModules]  For example, bundle multiple main programs (without duplicating any code) into a single elm.js like this:
 
 	elm-make Header.elm Footer.elm Login.elm --output=elm.js
-	
+
 and then use them like this:
 
 	var headernode = document.getElementById('header');
 	var footernode = document.getElementById('footer');
 	var loginnode = document.getElementById('login');
 
-	Elm.Header.embed(headernode); 
-	Elm.Footer.embed(footernode); 
+	Elm.Header.embed(headernode);
+	Elm.Footer.embed(footernode);
 	Elm.Login.embed(loginnode);  
 
 [^multipleModules]: Use of multiple main modules in one application is discussed
@@ -167,9 +167,9 @@ and then use them like this:
 
 ### Does the main module file have to be named "Main.elm"?
 
-No, that is just a convention. Any module containing a `main` function of type `Program Never` can be an entry point to an Elm program.
+No, that is just a convention. Any module that binds `main` to a value of type `Program Never` can be an entry point to an Elm program.
 
-For example, if both Foo.elm and Bar.elm contain an appropriate `main` function,
+For example, if both Foo.elm and Bar.elm contain an appropriate binding of `main`,
 compiling via "elm-make Foo.elm Bar.elm \-\-output elm.js" creates an elm.js file
 such that both `Elm.Foo.embed(someElement)` and
 `Elm.Bar.embed(someOtherElement)` can be used from the same HTML file.
@@ -299,17 +299,17 @@ in the Elm program itself. Here is an example (thanks to @pdamoc):
 
 ```elm
 import Html exposing (..)
-import Html.Attributes exposing (..) 
+import Html.Attributes exposing (..)
 
-withStyle html = 
+withStyle html =
   div []
-  [ node "style" [type' "text/css"] 
+  [ node "style" [type' "text/css"]
     [text "@import url(https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.min.css)"]
   , html
   ]
 
 main =
-  div [] 
+  div []
     [ a [class "button is-primary"] [text "Primary"]
     , a [class "button is-info"] [text "Info"]
     ]
@@ -504,12 +504,12 @@ Any module using ports must start with `port module` on the first line.
 The following function constructs a Cmd value from a message:
 
 ```haskell
-message : msg -> Cmd msg 
-message msg = 
+message : msg -> Cmd msg
+message msg =
     Task.perform identity (Task.succeed msg)
 ```
 
-However, this is often unnecessary. To handle a message produced by a call to `update` you may pass it straight back to `update` recursively. The package [ccapndave/elm-update-extra](http://package.elm-lang.org/packages/ccapndave/elm-update-extra/latest) provides helper functions for implementing this approach elegantly. 
+However, this is often unnecessary. To handle a message produced by a call to `update` you may pass it straight back to `update` recursively. The package [ccapndave/elm-update-extra](http://package.elm-lang.org/packages/ccapndave/elm-update-extra/latest) provides helper functions for implementing this approach elegantly.
 
 The latter approach is likely to be more efficient in most cases. The former option may be attractive when recursive calls to `update` could cause an infinite loop, or for authors of reusable components interested in creating a clean encapsulation of their library's internal behavior.
 
@@ -532,13 +532,13 @@ This is why APIs generally expose `Task` instances rather than `Cmd`:  so you ca
 
 See [Building custom DOM event handlers in Elm](https://robots.thoughtbot.com/building-custom-dom-event-handlers-in-elm) for some examples of event handlers.
 
-### How do I prevent weird DOM behavior (cursor jumps, duplicate input, etc.) for input and textarea fields? 
+### How do I prevent weird DOM behavior (cursor jumps, duplicate input, etc.) for input and textarea fields?
 
 This is a known issue or set of issues, see discussion and workarounds [here](https://github.com/elm-lang/html/issues/105) and [here](https://github.com/elm-lang/html/issues/55).
 
 ### What is the recommended way to organize modules, file system structure, etc.?
 
-There is not one definitive way to do it. Generally, a module in Elm is organized around a data structure relevant to the domain rather than abstracted functions (such as putting all your view or update functions together). See [Evan's recommendations here](https://www.reddit.com/r/elm/comments/69hwta/can_i_split_my_code_into_viewmodelupdate_folders/dh6szt9/). 
+There is not one definitive way to do it. Generally, a module in Elm is organized around a data structure relevant to the domain rather than abstracted functions (such as putting all your view or update functions together). See [Evan's recommendations here](https://www.reddit.com/r/elm/comments/69hwta/can_i_split_my_code_into_viewmodelupdate_folders/dh6szt9/).
 
   > I suspect the heart of a great module in Elm is a data structure. A type or type alias that represents some important and coherent concept. From there, you have functions for working with that data structure. A good test for which functions to include might be to ask: does this function make sense if I only read this module?
 
@@ -548,9 +548,9 @@ And for a fully worked example of a simple SPA, see [Richard Feldman's Elm imple
 
 ### What is "elm-community"?
 
-See the [Elm-community Manifesto](https://github.com/elm-community/Manifesto#mandate). The elm-community organization came about when some useful packages were no longer being maintained by their creators. The organization formed to make a new home for those packages. Elm-community packages are not inherently more reliable than others but are perhaps more likely to be supported in the long run. Elm-community packages are not a staging area for core. 
+See the [Elm-community Manifesto](https://github.com/elm-community/Manifesto#mandate). The elm-community organization came about when some useful packages were no longer being maintained by their creators. The organization formed to make a new home for those packages. Elm-community packages are not inherently more reliable than others but are perhaps more likely to be supported in the long run. Elm-community packages are not a staging area for core.
 
-### Can Elm be used when developing with SEO in mind? 
+### Can Elm be used when developing with SEO in mind?
 
 Most crawlers should work fine with Elm rendered pages. Follow general [recommendations for JavaScript sites](https://plus.google.com/u/0/+JohnMueller/posts/LT4fU7kFB8W) (please note that, even if Googlebot does not support requestAnimationFrame, Elm's fallback handles most cases just fine). If you want to support crawlers that don't support any JS, investigate using [elm-server-side-renderer](https://github.com/eeue56/elm-server-side-renderer).  
 
@@ -563,4 +563,3 @@ See this [elm-discuss message](https://groups.google.com/forum/#!msg/elm-discuss
 
 
 ## Notes
-
