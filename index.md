@@ -32,6 +32,13 @@ attached), and `type alias` gives a name to an existing type.
 `type alias` isn't creating a distinct type, it is literally just giving a name to an existing type. A type alias will save you keystrokes, but do nothing more. [ref](https://groups.google.com/forum/#!topic/elm-discuss/YgRqI5s2S7Y)
 
 
+### Why are things called "union types" rather than "algebraic data types"?
+
+1. "Union type" is a common name for the [same construct in other languages](https://en.wikipedia.org/wiki/Union_type).
+
+2. "Union type" is [less academic sounding](https://groups.google.com/d/msg/elm-discuss/rI_IAf4TiAA/KTvQv1LQ6uAJ) than "algebraic data type". The latter implies a need to understand type theory. "Union type" may be more familiar and less off-putting.
+
+3. "Union type" is a more precise definition. Algebraic data types in general have both union (sum) types and product types (which in Elm are records).
 
 
 ### Why does elm-repl (or elm-make) report "cannot find module 'Html'"?
