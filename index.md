@@ -34,11 +34,13 @@ attached), and `type alias` gives a name to an existing type.
 
 ### Why are things called "union types" rather than "algebraic data types"?
 
-1. "Union type" is a common name for the [same construct in other languages](https://en.wikipedia.org/wiki/Union_type).
+The term [union type](https://en.wikipedia.org/wiki/Union_type) means:
 
-2. "Union type" is [less academic sounding](https://groups.google.com/d/msg/elm-discuss/rI_IAf4TiAA/KTvQv1LQ6uAJ) than "algebraic data type". The latter implies a need to understand type theory. "Union type" may be more familiar and less off-putting.
+> a value that may have any of several representations or formats within the same position in memory.
 
-3. "Union type" is a more precise definition. Algebraic data types in general have both union (sum) types and product types (which in Elm are records).
+This is exactly what a union type is in Elm, and the term is used in languages like C, JavaScript, and TypeScript as well. If you want to be extra specific, you can say that Elm has [*tagged* union types](https://en.wikipedia.org/wiki/Tagged_union) so that we can tell the difference between values with case expressions.
+
+Based on experiences teaching Elm to newcomers and discussions like [this](https://groups.google.com/forum/#!msg/elm-discuss/rI_IAf4TiAA/KTvQv1LQ6uAJ), we ended up going with the term union type over "algebraic data type" for this feature. The term "union type" seems to provide more context clues to newcomers, and we have had fewer questions about the feature since the switch.
 
 
 ### Why does elm-repl (or elm-make) report "cannot find module 'Html'"?
