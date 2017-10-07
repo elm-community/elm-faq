@@ -545,6 +545,44 @@ See [Building custom DOM event handlers in Elm](https://robots.thoughtbot.com/bu
 
 This is a known issue or set of issues, see discussion and workarounds [here](https://github.com/elm-lang/html/issues/105) and [here](https://github.com/elm-lang/html/issues/55).
 
+### How do I navigate to a new route from within a nested view, for example from a page view rather than the top level of my app?
+
+The [elm-lang/navigation](http://package.elm-lang.org/packages/elm-lang/navigation/latest/Navigation) library is the standard for managing browser navigation from within Elm. For changing the URL, you can either use `newUrl` (which adds to the browser's history) or `modifyUrl` (which doesn't). In either case, you pass it the new URL (String), and get back a `Cmd msg`.  
+
+Typically, on the page where you want to do the navigation (say on clicking a button), you will have 
+
+```
+    button [ onClick (NavigateTo Route.SomeRoute) ] [ text "go" ]
+```
+and in your `update`:
+
+```
+   case msg of
+       NavigateTo route ->
+           ( model,  Navigation.modifyUrl (Route.routeToString route)  )
+```
+
+where `Route.routeToString` converts your Route type to a URL (string). This is often moved to a helper function in your `Route` module:
+
+```
+   case msg of
+       NavigateTo route ->
+           ( model,  Route.modifyUrl route )
+```
+
+You only need to define a `NavigateTo` update branch as outlined above, wherever in your app you need to handle browser navigation, and it just works. 
+
+**Why does this work?**
+
+The handling of URL changes within your app is already defined at the top level through `Navigation.program` (which adds an implicit subscription). So `modifyUrl` and `newUrl` don't call a certain message when they are done.  It works regardless of the concrete `Cmd Msg` type of your update, because `Cmd msg` satisfies _any_ `Msg` type. (Similar to how you can use generic `Html msg` in any `Html Msg` context.)
+
+Here are some more in depth resources on URL parsing and navigation.
+
+  - The [Elm SPA example](https://rtfeldman/elm-spa-example) follows the pattern described here, see for example the Editor page.
+  - [Choosing the right Elm SPA Architecture](https://medium.com/elm-shorts/choosing-the-right-elm-spa-architecture-d6e8275f6899)
+  - [More on SPA navigation in Elm: Keep current page and browser bar in sync, and add data to routes](https://medium.com/elm-shorts/more-on-spa-navigation-in-elm-31a066c6b9ae)
+
+
 ### What is the recommended way to organize modules, file system structure, etc.?
 
 There is not one definitive way to do it. Generally, a module in Elm is organized around a data structure relevant to the domain rather than abstracted functions (such as putting all your view or update functions together). See [Evan's recommendations here](https://www.reddit.com/r/elm/comments/69hwta/can_i_split_my_code_into_viewmodelupdate_folders/dh6szt9/).
