@@ -608,5 +608,11 @@ See this [elm-discuss message](https://groups.google.com/forum/#!msg/elm-discuss
 
 [^elm-name]: But I still think it's an anagram of *E*van's *ML*. [FCY]
 
+### Can I upload a Native module to the package repository?
+
+No, you cannot. The rationale for that policy is explained in this Google groups thread about the [Foundation for planning "native" APIs in 0.17](https://groups.google.com/forum/#!msg/elm-dev/1JW6wknkDIo/H9ZnS71BCAAJ)
+and in this later followup thread about [Reframing "native" code as "kernel" code](https://groups.google.com/forum/#!msg/elm-dev/bAHD_8PbgKE/X-z67wTdCAAJ). 
+Those are linked from a Reddit post about [An explanation of Elm's policy on "native code"](https://www.reddit.com/r/elm/comments/73ubxo/an_explanation_of_elms_policy_on_native_code/).
+
 
 ## Notes
