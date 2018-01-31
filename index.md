@@ -487,14 +487,14 @@ See this [post](https://medium.com/elm-shorts/intro-to-records-in-elm-51bc5e933a
 ### Where are the `Cmd` and `Sub` types defined?
 
 They are defined in the core
-[Platform.Cmd](http://package.elm-lang.org/packages/elm-lang/core/4.0.0/Platform-Cmd)
+[Platform.Cmd](http://package.elm-lang.org/packages/elm-lang/core/latest/Platform-Cmd)
 and
-[Platform.Sub](http://package.elm-lang.org/packages/elm-lang/core/4.0.0/Platform-Sub)
+[Platform.Sub](http://package.elm-lang.org/packages/elm-lang/core/latest/Platform-Sub)
 modules.
 
 ### What is this `! []` construct in the code?
 
-The `!` operator is defined as a convenience function in the [Platform-Cmd](http://package.elm-lang.org/packages/elm-lang/core/4.0.0/Platform-Cmd#!) module.
+The `!` operator is defined as a convenience function in the [Platform-Cmd](http://package.elm-lang.org/packages/elm-lang/core/latest/Platform-Cmd#!) module.
 
 Called as `model ! listOfCmds` it returns the `(model, cmd)` value needed as the return value of an `update` function.
 
