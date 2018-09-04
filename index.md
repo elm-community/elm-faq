@@ -543,7 +543,7 @@ See [Building custom DOM event handlers in Elm](https://robots.thoughtbot.com/bu
 
 ### How do I prevent weird DOM behavior (cursor jumps, duplicate input, etc.) for input and textarea fields?
 
-This is a known issue or set of issues, see discussion and workarounds [here](https://github.com/elm-lang/html/issues/105) and [here](https://github.com/elm-lang/html/issues/55).
+This is a known issue or set of issues, see discussion and workarounds [here](https://github.com/elm/html/issues/105) and [here](https://github.com/elm/html/issues/55).
 
 ### How do I navigate to a new route from within a nested view, for example from a page view rather than the top level of my app?
 
