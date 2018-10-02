@@ -46,7 +46,7 @@ Several modules are [available by default](http://package.elm-lang.org/packages/
 
 elm-repl does not support type annotations at all. If you try you'll see a "syntax problem" message saying something like "I ran into something unexpected when parsing your code!" and pointing to the colon.
 
-To use type annotations you will have to use elm-reactor or [elm-lang.org/try](http://elm-lang.org/try), or build and run a complete app.
+To use type annotations you will have to use elm-reactor or [Ellie](https://ellie-app.com), or build and run a complete app.
 
 
 
