@@ -36,9 +36,9 @@ attached), and `type alias` gives a name to an existing type.
 ### Why does elm-repl (or elm-make) report "cannot find module 'Html'"?
 You need to install the Html module:
 
-    elm package install elm-lang/html
+    elm install elm/html
 
-Several modules are [available by default](http://package.elm-lang.org/packages/elm-lang/core/latest) in the base Elm tools but other common modules like Html have to be installed in the working directory before they can be used in elm-make, elm-repl, and elm-reactor.
+Several modules are [available by default](https://package.elm-lang.org/packages/elm/core/latest/) in the base Elm tools but other common modules like Html have to be installed in the working directory before they can be used in elm-make, elm-repl, and elm-reactor.
 
 
 
@@ -50,8 +50,8 @@ To use type annotations you will have to use elm-reactor or [Ellie](https://elli
 
 
 
-### How do I know what package name to use for `elm package install`?
-Search on [package.elm-lang.org](http://package.elm-lang.org/) for the module name and use the package name that you find there.
+### How do I know what package name to use for `elm install`?
+Search on [package.elm-lang.org](https://package.elm-lang.org/) for the module name and use the package name that you find there.
 
 
 
@@ -68,7 +68,7 @@ If you want to just log a message and value without using that value, try this i
 _ = Debug.log "my message" someValue
 ```
 
-Also see [`Debug.crash`](http://package.elm-lang.org/packages/elm-lang/core/latest/Debug#crash)
+Also see [`Debug.todo`](https://package.elm-lang.org/packages/elm/core/latest/Debug#todo)
 which gets special treatment from the compiler to provide additional information in the output.
 
 
@@ -139,7 +139,7 @@ Note: The `<|` operator is essentially the same as `$` in Haskell.
 ### What are the Elm operator precedences and associativities?
 
 See an [Elm operator precedence table](operators.html).
-See also [Basics.elm](https://github.com/elm-lang/core/blob/master/src/Basics.elm).
+See also [Basics.elm](https://github.com/elm/core/blob/master/src/Basics.elm).
 
 
 
@@ -220,7 +220,7 @@ in
 
 
 ### How can I join the elmlang.slack.com community?
-Sign up at [elmlang.herokuapp.com](http://elmlang.herokuapp.com/).
+Sign up at [elmlang.herokuapp.com](https://elmlang.herokuapp.com/).
 
 
 
