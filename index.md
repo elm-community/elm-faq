@@ -16,7 +16,7 @@ question here!
   are welcome!
 
 * This document is about the current version of Elm (0.19). See also the
-  [Elm 0.17 FAQ](17.html) about upgrading to Elm 0.17. See the [Elm 0.16 FAQ](16.html)
+  [Elm 0.17 FAQ](17.md) about upgrading to Elm 0.17. See the [Elm 0.16 FAQ](16.md)
   about that older version of Elm.
 
 #### Contents
@@ -147,7 +147,7 @@ See also [Basics.elm](https://github.com/elm/core/blob/master/src/Basics.elm).
 
 You can compile multiple modules into a single elm.js and then instantiate whatever module you need on the appropriate div. [^multipleModules]  For example, bundle multiple main programs (without duplicating any code) into a single elm.js like this:
 
-	elm-make Header.elm Footer.elm Login.elm --output=elm.js
+	elm make Header.elm Footer.elm Login.elm --output=elm.js
 
 and then use them like this:
 
@@ -176,7 +176,7 @@ such that both `Elm.Foo.embed(someElement)` and
 
 ### Why doesn't the Elm compiler find the Native code in a module that I cloned from github?
 
-To use native code not installed by `elm-package` you need to add this to your elm-package.json file:
+To use native code not installed by `elm package` you need to add this to your elm-package.json file:
 
     "native-modules": true,
 
@@ -241,8 +241,8 @@ Clone the package into a separate directory and add its directory path to the `s
 ### How can I parse Json into Elm data?
 
 Currently you have to write the [parsing
-code](http://package.elm-lang.org/packages/elm-lang/core/latest/Json-Decode).
-Other than for [data passed over ports](http://elm-lang.org/guide/interop#customs-and-border-protection) there is no automatic conversion (and even
+code](https://package.elm-lang.org/packages/elm/json/latest/Json-Decode).
+Other than for [data passed over ports](https://guide.elm-lang.org/interop/ports.html) there is no automatic conversion (and even
 there, experts recommend writing the parser manually to be able to handle error
 cases).
 
@@ -264,14 +264,14 @@ port incoming : ({ intValue : Int, stringValue : String } -> msg) -> Sub msg
 
 ### How can I report a compiler error message that could be better?
 
-Report the problem at the [error-message-catalog issue tracker](https://github.com/elm-lang/error-message-catalog/issues)
+Report the problem at the [error-message-catalog issue tracker](https://github.com/elm/error-message-catalog/issues)
 with an [short, self-contained, correct, example](http://sscce.org/) showing both the program and the problematic error messages.
 
 
 
 ### Does Elm have HashMaps?
 
-The core [Dict](http://package.elm-lang.org/packages/elm-lang/core/latest/Dict) package provides a dictionary mapping unique keys to values. There are some restrictions on key value types; in particular, records cannot be keys.
+The core [Dict](https://package.elm-lang.org/packages/elm/core/latest/Dict) package provides a dictionary mapping unique keys to values. There are some restrictions on key value types; in particular, records cannot be keys.
 
 
 ### Why does my app fail immediately with a console error of "Uncaught TypeError: Cannot read property 'appendChild' of null"?
