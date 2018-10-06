@@ -33,20 +33,20 @@ attached), and `type alias` gives a name to an existing type.
 
 
 
-### Why does elm-repl (or elm-make) report "cannot find module 'Html'"?
+### Why does elm repl (or elm make) report "cannot find module 'Html'"?
 You need to install the Html module:
 
     elm install elm/html
 
-Several modules are [available by default](https://package.elm-lang.org/packages/elm/core/latest/) in the base Elm tools but other common modules like Html have to be installed in the working directory before they can be used in elm-make, elm-repl, and elm-reactor.
+Several modules are [available by default](https://package.elm-lang.org/packages/elm/core/latest/) in the base Elm tools but other common modules like Html have to be installed in the working directory before they can be used in elm make, elm repl, and elm reactor.
 
 
 
-### Why does elm-repl report a syntax problem for any type annotation, such as for `fib : Int -> Int`?
+### Why does elm repl report a syntax problem for any type annotation, such as for `fib : Int -> Int`?
 
-elm-repl does not support type annotations at all. If you try you'll see a "syntax problem" message saying something like "I ran into something unexpected when parsing your code!" and pointing to the colon.
+elm repl does not support type annotations at all. If you try you'll see a "syntax problem" message saying something like "I ran into something unexpected when parsing your code!" and pointing to the colon.
 
-To use type annotations you will have to use elm-reactor or [Ellie](https://ellie-app.com), or build and run a complete app.
+To use type annotations you will have to use elm reactor or [Ellie](https://ellie-app.com), or build and run a complete app.
 
 
 
@@ -84,7 +84,7 @@ If you need to switch between multiple versions of elm, consider [elmenv](https:
 ### What does `=>` mean?
 A common idiom is to define the `(=>)` operator as a synonym for the `(,)` operator that constructs tuples (see just below). This makes a shorthand for long lists of tuple pairs, often used with the Html.style property.  So `["color" => "red", "padding" => "2px"]` means `[("color", "red"), ("padding", "2px")]`.
 
-Note: Operators cannot be defined in elm-repl.
+Note: Operators cannot be defined in elm repl.
 
 
 ### What does `(,)` mean?
@@ -169,7 +169,7 @@ and then use them like this:
 No, that is just a convention. Any module that binds `main` to a value of type `Program Never` can be an entry point to an Elm program.
 
 For example, if both Foo.elm and Bar.elm contain an appropriate binding of `main`,
-compiling via "elm-make Foo.elm Bar.elm \-\-output elm.js" creates an elm.js file
+compiling via `elm make Foo.elm Bar.elm \-\-output elm.js` creates an elm.js file
 such that both `Elm.Foo.embed(someElement)` and
 `Elm.Bar.embed(someOtherElement)` can be used from the same HTML file.
 
@@ -224,7 +224,7 @@ Sign up at [elmlang.herokuapp.com](https://elmlang.herokuapp.com/).
 
 
 
-### How can I recover when elm-make fails with errors like "... openFile: does not exist"?
+### How can I recover when elm make fails with errors like "... openFile: does not exist"?
 
 That can happen when switching between elm versions. Try removing all of elm-stuff or just the build-artifacts:
 
@@ -234,7 +234,7 @@ That can happen when switching between elm versions. Try removing all of elm-stu
 
 ### How do I install an Elm package that has not been published to packages.elm-lang.org for use in my project?
 
-Clone the package into a separate directory and add its directory path to the `source-directories` section of the elm-package.json file for your project. As usual, you will also have to install any dependencies of the package. If the package includes any native javascript code you will have to also add `native-modules: true` to elm-package.json. In 0.17 onwards, you will also need to edit the Native files so that any references to `_user$project$module` will be replaced with `_your_user$your_project$module`.
+Clone the package into a separate directory and add its directory path to the `source-directories` section of the elm.json file for your project. As usual, you will also have to install any dependencies of the package. If the package includes any native javascript code you will have to also add `native-modules: true` to elm.json. In 0.17 onwards, you will also need to edit the Native files so that any references to `_user$project$module` will be replaced with `_your_user$your_project$module`.
 
 
 
@@ -284,14 +284,14 @@ Similarly, Elm's `fullscreen` function should be called only after the page body
 Good practice is to call `embed` or `fullscreen` at the end of the document body.
 
 
-### How can I load CSS (or other resources) in elm-reactor?
+### How can I load CSS (or other resources) in elm reactor?
 
-It's not easy. Elm-reactor can serve CSS files and so you can write a custom
+It's not easy. Elm reactor can serve CSS files and so you can write a custom
 HTML file that links in your CSS and the elm.js generated by Elm and then load
-that HTML file in elm-reactor. But you have to generate the elm.js outside of
-elm-reactor; it is not automatically built or rebuilt on changes to the Elm source.
+that HTML file in elm reactor. But you have to generate the elm.js outside of
+elm reactor; it is not automatically built or rebuilt on changes to the Elm source.
 
-When you click an Elm source file in elm-reactor it compiles just that file (and
+When you click an Elm source file in elm reactor it compiles just that file (and
 any dependencies) and sends back the generated javascript which then runs and
 displays the full page view of the program. So to add any CSS you have to do it
 in the Elm program itself. Here is an example (thanks to @pdamoc):
@@ -379,7 +379,7 @@ then it can also take an Int and a Float and return a String, or take a Float an
 #### Why doesn't Elm have user-defined typeclasses?
 
 So far there have not been enough compelling cases to justify adding user-defined typeclasses to the language.
-See [compiler issue #1039](https://github.com/elm-lang/elm-compiler/issues/1039).
+See [compiler issue #1039](https://github.com/elm/compiler/issues/1039).
 
 
 ### Which special type variables are there, and how do they work?
@@ -427,7 +427,7 @@ But it is:
 Strictly speaking, you can't. Record values (like all Elm values) are
 immutable. However, you can *copy* a record value and change one or
 more of its field values while doing so. Here is an example in
-elm-repl:
+elm repl:
 
 ```haskell
 > x = { name = "Chris", age = 30 }
@@ -477,9 +477,9 @@ See this [post](https://medium.com/elm-shorts/intro-to-records-in-elm-51bc5e933a
 ### Where are the `Cmd` and `Sub` types defined?
 
 They are defined in the core
-[Platform.Cmd](http://package.elm-lang.org/packages/elm-lang/core/latest/Platform-Cmd)
+[Platform.Cmd](https://package.elm-lang.org/packages/elm/core/latest/Platform-Cmd)
 and
-[Platform.Sub](http://package.elm-lang.org/packages/elm-lang/core/latest/Platform-Sub)
+[Platform.Sub](https://package.elm-lang.org/packages/elm/core/latest/Platform-Sub)
 modules.
 
 ### What is this `! []` construct in the code?
@@ -537,7 +537,7 @@ This is a known issue or set of issues, see discussion and workarounds [here](ht
 
 ### How do I navigate to a new route from within a nested view, for example from a page view rather than the top level of my app?
 
-The [elm-lang/navigation](http://package.elm-lang.org/packages/elm-lang/navigation/latest/Navigation) library is the standard for managing browser navigation from within Elm. For changing the URL, you can either use `newUrl` (which adds to the browser's history) or `modifyUrl` (which doesn't). In either case, you pass it the new URL (String), and get back a `Cmd msg`.  
+The [elm/browser/Browser.Navigation](https://package.elm-lang.org/packages/elm/browser/latest/Browser-Navigation) module is the standard for managing browser navigation from within Elm. For changing the URL, you can either use `newUrl` (which adds to the browser's history) or `replaceUrl` (which doesn't). In either case, you pass it the new URL (String), and get back a `Cmd msg`.  
 
 Typically, on the page where you want to do the navigation (say on clicking a button), you will have 
 
@@ -549,7 +549,7 @@ and in your `update`:
 ```
    case msg of
        NavigateTo route ->
-           ( model,  Navigation.modifyUrl (Route.routeToString route)  )
+           ( model,  Browser.Navigation.replaceUrl (Route.routeToString route)  )
 ```
 
 where `Route.routeToString` converts your Route type to a URL (string). This is often moved to a helper function in your `Route` module:
@@ -564,7 +564,7 @@ You only need to define a `NavigateTo` update branch as outlined above, wherever
 
 **Why does this work?**
 
-The handling of URL changes within your app is already defined at the top level through `Navigation.program` (which adds an implicit subscription). So `modifyUrl` and `newUrl` don't call a certain message when they are done.  It works regardless of the concrete `Cmd Msg` type of your update, because `Cmd msg` satisfies _any_ `Msg` type. (Similar to how you can use generic `Html msg` in any `Html Msg` context.)
+The handling of URL changes within your app is already defined at the top level through [`Browser.application`](https://package.elm-lang.org/packages/elm/browser/latest/Browser#application) (which adds an implicit subscription). So `replaceUrl` and `newUrl` don't call a certain message when they are done.  It works regardless of the concrete `Cmd Msg` type of your update, because `Cmd msg` satisfies _any_ `Msg` type. (Similar to how you can use generic `Html msg` in any `Html Msg` context.)
 
 Here are some more in depth resources on URL parsing and navigation.
 
