@@ -16,7 +16,7 @@ question here!
   are welcome!
 
 * This document is about the current version of Elm (0.19). See also the
-  [Elm 0.17 FAQ](17.md) about upgrading to Elm 0.17. See the [Elm 0.16 FAQ](16.md)
+  [Elm 0.17 FAQ](17.html) about upgrading to Elm 0.17. See the [Elm 0.16 FAQ](16.html)
   about that older version of Elm.
 
 #### Contents
