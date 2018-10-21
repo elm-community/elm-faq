@@ -176,7 +176,7 @@ such that both `Elm.Foo.embed(someElement)` and
 
 ### Why doesn't the Elm compiler find the Native code in a module that I cloned from github?
 
-To use native code not installed by `elm package` you need to add this to your elm-package.json file:
+To use native code not installed by `elm package` you need to add this to your elm.json file:
 
     "native-modules": true,
 
