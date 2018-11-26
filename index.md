@@ -157,7 +157,7 @@ and then use them like this:
 
 	Elm.Header.embed(headernode);
 	Elm.Footer.embed(footernode);
-	Elm.Login.embed(loginnode);  
+	Elm.Login.embed(loginnode);
 
 [^multipleModules]: Use of multiple main modules in one application is discussed
     [here](https://groups.google.com/d/msg/elm-discuss/eEJgNnl99ps/keWXnn1KCwAJ)
@@ -265,7 +265,7 @@ port incoming : ({ intValue : Int, stringValue : String } -> msg) -> Sub msg
 ### How can I report a compiler error message that could be better?
 
 Report the problem at the [error-message-catalog issue tracker](https://github.com/elm/error-message-catalog/issues)
-with an [short, self-contained, correct, example](http://sscce.org/) showing both the program and the problematic error messages.
+with a [short, self-contained, correct, example](http://sscce.org/) showing both the program and the problematic error messages.
 
 
 
@@ -537,9 +537,9 @@ This is a known issue or set of issues, see discussion and workarounds [here](ht
 
 ### How do I navigate to a new route from within a nested view, for example from a page view rather than the top level of my app?
 
-The [elm/browser/Browser.Navigation](https://package.elm-lang.org/packages/elm/browser/latest/Browser-Navigation) module is the standard for managing browser navigation from within Elm. For changing the URL, you can either use `newUrl` (which adds to the browser's history) or `replaceUrl` (which doesn't). In either case, you pass it the new URL (String), and get back a `Cmd msg`.  
+The [elm/browser/Browser.Navigation](https://package.elm-lang.org/packages/elm/browser/latest/Browser-Navigation) module is the standard for managing browser navigation from within Elm. For changing the URL, you can either use `newUrl` (which adds to the browser's history) or `replaceUrl` (which doesn't). In either case, you pass it the new URL (String), and get back a `Cmd msg`.
 
-Typically, on the page where you want to do the navigation (say on clicking a button), you will have 
+Typically, on the page where you want to do the navigation (say on clicking a button), you will have
 
 ```
     button [ onClick (NavigateTo Route.SomeRoute) ] [ text "go" ]
@@ -560,7 +560,7 @@ where `Route.routeToString` converts your Route type to a URL (string). This is 
            ( model,  Route.modifyUrl route )
 ```
 
-You only need to define a `NavigateTo` update branch as outlined above, wherever in your app you need to handle browser navigation, and it just works. 
+You only need to define a `NavigateTo` update branch as outlined above, wherever in your app you need to handle browser navigation, and it just works.
 
 **Why does this work?**
 
@@ -589,7 +589,7 @@ See the [Elm-community Manifesto](https://github.com/elm-community/Manifesto#man
 
 ### Can Elm be used when developing with SEO in mind?
 
-Most crawlers should work fine with Elm rendered pages. Follow general [recommendations for JavaScript sites](https://plus.google.com/u/0/+JohnMueller/posts/LT4fU7kFB8W) (please note that, even if Googlebot does not support requestAnimationFrame, Elm's fallback handles most cases just fine). If you want to support crawlers that don't support any JS, investigate using [elm-server-side-renderer](https://github.com/eeue56/elm-server-side-renderer).  
+Most crawlers should work fine with Elm rendered pages. Follow general [recommendations for JavaScript sites](https://plus.google.com/u/0/+JohnMueller/posts/LT4fU7kFB8W) (please note that, even if Googlebot does not support requestAnimationFrame, Elm's fallback handles most cases just fine). If you want to support crawlers that don't support any JS, investigate using [elm-server-side-renderer](https://github.com/eeue56/elm-server-side-renderer).
 
 ### What does the name "Elm" stand for?
 
@@ -601,7 +601,7 @@ See this [elm-discuss message](https://groups.google.com/forum/#!msg/elm-discuss
 ### Can I upload a Native module to the package repository?
 
 No, you cannot. The rationale for that policy is explained in this Google groups thread about the [Foundation for planning "native" APIs in 0.17](https://groups.google.com/forum/#!msg/elm-dev/1JW6wknkDIo/H9ZnS71BCAAJ)
-and in this later followup thread about [Reframing "native" code as "kernel" code](https://groups.google.com/forum/#!msg/elm-dev/bAHD_8PbgKE/X-z67wTdCAAJ). 
+and in this later followup thread about [Reframing "native" code as "kernel" code](https://groups.google.com/forum/#!msg/elm-dev/bAHD_8PbgKE/X-z67wTdCAAJ).
 Those are linked from a Reddit post about [An explanation of Elm's policy on "native code"](https://www.reddit.com/r/elm/comments/73ubxo/an_explanation_of_elms_policy_on_native_code/).
 
 
