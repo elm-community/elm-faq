@@ -81,31 +81,6 @@ If you need to switch between multiple versions of elm, consider [elmenv](https:
 
 
 
-### What does `=>` mean?
-A common idiom is to define the `(=>)` operator as a synonym for the `(,)` operator that constructs tuples (see just below). This makes a shorthand for long lists of tuple pairs, often used with the Html.style property.  So `["color" => "red", "padding" => "2px"]` means `[("color", "red"), ("padding", "2px")]`.
-
-Note: Operators cannot be defined in elm repl.
-
-
-### What does `(,)` mean?
-
-`(,)` is the tuple-forming operator in prefix form[^tupleInfix].
-It constructs a 2-tuple from its two arguments. Its type is
-`a -> b -> (a, b)`.
-
-There are similar prefix operators for n-tuples. E.g, `(,,)` constructs a 3-tuple and `(,,,)` a 4-tuple.
-
-The following expressions are true:
-
-```haskell
-(,) 3 4 == (3, 4)
-(,) "foo" 42 == ("foo", 42)
-(,,) "won" "too" "tree" == ("won", "too", "tree")
-```
-
-[^tupleInfix]: Note that `,` (the single character, not the prefix form) is not really an infix operator by itself. It's used as a syntactic separator when constructing a tuple value like `(1, 2)`. But just `1 , 2` alone is not a valid expression.
-
-
 ### What's the difference between `Html Msg` and `Html msg`?
 `msg` is a placeholder used when the HTML doesn't send any messages of type `Msg` (as in `type Msg = ...`). This is just as `a` is used as a placeholder in `List a` when the list is of any type, rather than of strings (`List String`) or integers (`List Int`) etc.. `msg` means "message of any type".
 
