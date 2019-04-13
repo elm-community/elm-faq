@@ -361,7 +361,7 @@ See [compiler issue #1039](https://github.com/elm/compiler/issues/1039).
 
 There are four special type vairables, which are `number`, `comparable`, `appendable`, and `compappend`. Please see question [Does Elm have ad-hoc polymorphism or typeclasses?](#does-elm-have-ad-hoc-polymorphism-or-typeclasses) for the details.
 
-These built-in type variables work differently from the ones defined by user defined. The main difference is these built-in type variables can only mean what it defined to mean. For example:
+These built-in type variables work differently from the ones defined by user defined. The main difference is these built-in type variables can only mean what they are defined to mean. For example:
 
 ```haskell
 type alias PlusFn t =
