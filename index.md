@@ -87,12 +87,10 @@ If you need to switch between multiple versions of elm, consider [elmenv](https:
 
 
 ### How can I output literal HTML and avoid escaping of entities?
-Use the `innerHTML` property. For example:
 
-```haskell
-span [ property "innerHTML" (Json.Encode.string "&copy;") ] []
-```
+We used to use the `innerHTML` property for this, but Elm 0.19 no longer allows that.
 
+See [issue #172](https://github.com/elm/html/issues/172) for discussion of the issue and possible solutions.
 
 
 ### What does `()` mean?
