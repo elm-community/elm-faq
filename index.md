@@ -3,7 +3,7 @@ title: Elm FAQ
 layout: page
 ---
 
-**This page is mostly for folks *learning* Elm.** It aggregates questions that are commonly
+**This page is mostly for folks _learning_ Elm.** It aggregates questions that are commonly
 asked on [the Slack channel][slack], [the IRC channel][irc], or [the mailing list][list].
 Those are all friendly and helpful places to go if you do not find the answer to your
 question here!
@@ -12,17 +12,16 @@ question here!
 [irc]: http://webchat.freenode.net/?channels=elm
 [list]: https://groups.google.com/forum/#!forum/elm-discuss
 
-* Contributions to [this document](https://github.com/elm-community/elm-faq)
+- Contributions to [this document](https://github.com/elm-community/elm-faq)
   are welcome!
 
-* This document is about the current version of Elm (0.19). See also the
+- This document is about the current version of Elm (0.19). See also the
   [Elm 0.17 FAQ](17.html) about upgrading to Elm 0.17. See the [Elm 0.16 FAQ](16.html)
   about that older version of Elm.
 
 #### Contents
 
 <div id="elm-content"></div>
-
 
 ### What is the difference between `type` and `type alias`?
 
@@ -31,16 +30,13 @@ attached), and `type alias` gives a name to an existing type.
 
 `type alias` isn't creating a distinct type, it is literally just giving a name to an existing type. A type alias will save you keystrokes, but do nothing more. [ref](https://groups.google.com/forum/#!topic/elm-discuss/YgRqI5s2S7Y)
 
-
-
 ### Why does elm repl (or elm make) report "cannot find module 'Html'"?
+
 You need to install the Html module:
 
     elm install elm/html
 
 Several modules are [available by default](https://package.elm-lang.org/packages/elm/core/latest/) in the base Elm tools but other common modules like Html have to be installed in the working directory before they can be used in elm make, elm repl, and elm reactor.
-
-
 
 ### Why does elm repl report a syntax problem for any type annotation, such as for `fib : Int -> Int`?
 
@@ -48,14 +44,12 @@ elm repl does not support type annotations at all. If you try you'll see a "synt
 
 To use type annotations you will have to use elm reactor or [Ellie](https://ellie-app.com), or build and run a complete app.
 
-
-
 ### How do I know what package name to use for `elm install`?
+
 Search on [package.elm-lang.org](https://package.elm-lang.org/) for the module name and use the package name that you find there.
 
-
-
 ### How can I write debugging information to the console?
+
 Wrap any value with `Debug.log “some message”` and that message and the value will be written to the javascript console every time the value is evaluated. For example:
 
 ```haskell
@@ -71,20 +65,15 @@ _ = Debug.log "my message" someValue
 Also see [`Debug.todo`](https://package.elm-lang.org/packages/elm/core/latest/Debug#todo)
 which gets special treatment from the compiler to provide additional information in the output.
 
-
-
 ### How do I install an older version of Elm, 0.16 for example?
 
     npm install -g elm@0.16
 
 If you need to switch between multiple versions of elm, consider [elmenv](https://github.com/sonnym/elmenv).
 
-
-
 ### What's the difference between `Html Msg` and `Html msg`?
+
 `msg` is a placeholder used when the HTML doesn't send any messages of type `Msg` (as in `type Msg = ...`). This is just as `a` is used as a placeholder in `List a` when the list is of any type, rather than of strings (`List String`) or integers (`List Int`) etc.. `msg` means "message of any type".
-
-
 
 ### How can I output literal HTML and avoid escaping of entities?
 
@@ -92,50 +81,44 @@ We used to use the `innerHTML` property for this, but Elm 0.19 no longer allows 
 
 See [issue #172](https://github.com/elm/html/issues/172) for discussion of the issue and possible solutions.
 
-
 ### What does `()` mean?
 
 It is the empty tuple or [unit type](https://en.wikipedia.org/wiki/Unit_type). It serves much like "void", "null", or "None" in other languages.
 
-
-
 ### What good is the `<|` operator if it is just function application?
 
-It has lower precedence than function application expressed by adjacency (e.g. `sqrt x`) and is right-associative, and so it can be used instead of parentheses to group function arguments. For example, `a b ( c d )` is the same as `a b <| c d`, and `f ( g ( h x ) ) )` can be written as `f <| g <| h x`.  More concretely, `max 3 (sqrt x)` can be written as `max 3 <| sqrt x`. [^application]
+It has lower precedence than function application expressed by adjacency (e.g. `sqrt x`) and is right-associative, and so it can be used instead of parentheses to group function arguments. For example, `a b ( c d )` is the same as `a b <| c d`, and `f ( g ( h x ) ) )` can be written as `f <| g <| h x`. More concretely, `max 3 (sqrt x)` can be written as `max 3 <| sqrt x`. [^application]
 
 [^application]: Function application and the `<|` operator are discussed at some length [here](https://groups.google.com/d/msg/elm-discuss/-PLj_eamKVQ/Zzo7iNx2FgAJ).
 
 Note: The `<|` operator is essentially the same as `$` in Haskell.
-
-
 
 ### What are the Elm operator precedences and associativities?
 
 See an [Elm operator precedence table](operators.html).
 See also [Basics.elm](https://github.com/elm/core/blob/master/src/Basics.elm).
 
-
-
 ### How can I use multiple Elm programs on the same page?
 
-You can compile multiple modules into a single elm.js and then instantiate whatever module you need on the appropriate div. [^multipleModules]  For example, bundle multiple main programs (without duplicating any code) into a single elm.js like this:
+You can compile multiple modules into a single elm.js and then instantiate whatever module you need on the appropriate div. [^multiplemodules] For example, bundle multiple main programs (without duplicating any code) into a single elm.js like this:
 
-	elm make Header.elm Footer.elm Login.elm --output=elm.js
+    elm make Header.elm Footer.elm Login.elm --output=elm.js
 
 and then use them like this:
 
-	var headernode = document.getElementById('header');
-	var footernode = document.getElementById('footer');
-	var loginnode = document.getElementById('login');
+    var headernode = document.getElementById('header');
+    var footernode = document.getElementById('footer');
+    var loginnode = document.getElementById('login');
 
-	Elm.Header.embed(headernode);
-	Elm.Footer.embed(footernode);
-	Elm.Login.embed(loginnode);
+    Elm.Header.embed(headernode);
+    Elm.Footer.embed(footernode);
+    Elm.Login.embed(loginnode);
 
-[^multipleModules]: Use of multiple main modules in one application is discussed
-    [here](https://groups.google.com/d/msg/elm-discuss/eEJgNnl99ps/keWXnn1KCwAJ)
-    and [here](https://www.reddit.com/r/elm/comments/5vh1fi/where_do_you_suffer_most_while_programming_in_elm/deb93ay/).
+[^multiplemodules]:
 
+  Use of multiple main modules in one application is discussed
+  [here](https://groups.google.com/d/msg/elm-discuss/eEJgNnl99ps/keWXnn1KCwAJ)
+  and [here](https://www.reddit.com/r/elm/comments/5vh1fi/where_do_you_suffer_most_while_programming_in_elm/deb93ay/).
 
 ### Does the main module file have to be named "Main.elm"?
 
@@ -146,36 +129,25 @@ compiling via `elm make Foo.elm Bar.elm \-\-output elm.js` creates an elm.js fil
 such that both `Elm.Foo.embed(someElement)` and
 `Elm.Bar.embed(someOtherElement)` can be used from the same HTML file.
 
-
 ### Why doesn't the Elm compiler find the Native code in a module that I cloned from github?
 
 To use native code not installed by `elm package` you need to add this to your elm.json file:
 
     "native-modules": true,
 
-
-
 ### Why, when I import a module that defines a type, does the compiler know about the type name but not its constructors?
 
 You need to import the module in one of the following ways:
 
-    import MyModule exposing (MyType(..)) -- exposes all constructors
-    import MyModule exposing (MyType(MyConstructor)) -- exposes only MyConstructor
+    import MyModule exposing (MyType(..)) -- import type and constructors
+    import MyModule exposing (MyType) -- import only the type, but no constructors.
 
-Just exposing `MyType` without the `(..)` will leave the constructors undefined, while exposing `(MyConstructor)` will expose `MyConstructor` but hide `AnotherConstructor`.
-
-Similarly, the module itself must export the constructors.
+Similarly, the module itself may export none, or all of a type's constructors.
 
     module MyModule exposing (MyType(..)) -- exposes all constructors
-    module MyModule exposing (MyType(MyConstructor)) -- exposes only MyConstructor
+    module MyModule exposing (MyType) -- exposes only MyType, but no constructors.
 
-However, there are reasons for [keeping tags and record constructors secret](http://package.elm-lang.org/help/design-guidelines#keep-tags-and-record-constructors-secret).
-
-You can also choose to export a type without exporting any constructors like this (just make sure you expose some other way of creating values of your type):
-
-    module MyModule exposing (MyType, myOtherFunctions)
-
-
+Just exposing `MyType` without the `(..)` will leave the constructors undefined. There are reasons for [keeping tags and record constructors secret](http://package.elm-lang.org/help/design-guidelines#keep-tags-and-record-constructors-secret).
 
 ### Where can I use type annotations?
 
@@ -190,12 +162,9 @@ in
   hypotenuse 3 4
 ```
 
-
-
 ### How can I join the elmlang.slack.com community?
+
 Sign up at [elmlang.herokuapp.com](https://elmlang.herokuapp.com/).
-
-
 
 ### How can I recover when elm make fails with errors like "... openFile: does not exist"?
 
@@ -203,13 +172,9 @@ That can happen when switching between elm versions. Try removing all of elm-stu
 
     rm -r elm-stuff/build-artifacts
 
-
-
 ### How do I install an Elm package that has not been published to packages.elm-lang.org for use in my project?
 
 Clone the package into a separate directory and add its directory path to the `source-directories` section of the elm.json file for your project. As usual, you will also have to install any dependencies of the package. If the package includes any native javascript code you will have to also add `native-modules: true` to elm.json. In 0.17 onwards, you will also need to edit the Native files so that any references to `_user$project$module` will be replaced with `_your_user$your_project$module`.
-
-
 
 ### How can I parse Json into Elm data?
 
@@ -240,22 +205,18 @@ port incoming : ({ intValue : Int, stringValue : String } -> msg) -> Sub msg
 Report the problem at the [error-message-catalog issue tracker](https://github.com/elm/error-message-catalog/issues)
 with a [short, self-contained, correct, example](http://sscce.org/) showing both the program and the problematic error messages.
 
-
-
 ### Does Elm have HashMaps?
 
 The core [Dict](https://package.elm-lang.org/packages/elm/core/latest/Dict) package provides a dictionary mapping unique keys to values. There are some restrictions on key value types; in particular, records cannot be keys.
 
-
 ### Why does my app fail immediately with a console error of "Uncaught TypeError: Cannot read property 'appendChild' of null"?
 
-Make sure that you are calling Elm's javascript `embed` function *after* the
+Make sure that you are calling Elm's javascript `embed` function _after_ the
 referenced container has been defined in the HTML file.
 
 Similarly, Elm's `fullscreen` function should be called only after the page body has started.
 
 Good practice is to call `embed` or `fullscreen` at the end of the document body.
-
 
 ### How can I load CSS (or other resources) in elm reactor?
 
@@ -291,10 +252,9 @@ main =
 
 For a more comprehensive solution, see the next question.
 
-
 ### How can I integrate Elm development into a larger app with CSS files and other resources?
 
-Elm-reactor is *not* appropriate for that; it's geared toward simple pure-Elm applications.
+Elm-reactor is _not_ appropriate for that; it's geared toward simple pure-Elm applications.
 
 Consider using other hot-reload tools:
 [elm-live](https://github.com/tomekwi/elm-live),
@@ -302,7 +262,6 @@ Consider using other hot-reload tools:
 [elm-webpack-starter](https://github.com/moarwick/elm-webpack-starter),
 [gulp-elm](https://github.com/philopon/gulp-elm/tree/master/example), or
 [devd](https://github.com/cortesi/devd).
-
 
 ### How does one render an HTML node conditionally?
 
@@ -354,7 +313,6 @@ then it can also take an Int and a Float and return a String, or take a Float an
 So far there have not been enough compelling cases to justify adding user-defined typeclasses to the language.
 See [compiler issue #1039](https://github.com/elm/compiler/issues/1039).
 
-
 ### Which special type variables are there, and how do they work?
 
 There are four special type vairables, which are `number`, `comparable`, `appendable`, and `compappend`. Please see question [Does Elm have ad-hoc polymorphism or typeclasses?](#does-elm-have-ad-hoc-polymorphism-or-typeclasses) for the details.
@@ -398,7 +356,7 @@ But it is:
 ### How can I change the value of a field in a record?
 
 Strictly speaking, you can't. Record values (like all Elm values) are
-immutable. However, you can *copy* a record value and change one or
+immutable. However, you can _copy_ a record value and change one or
 more of its field values while doing so. Here is an example in
 elm repl:
 
@@ -445,7 +403,6 @@ changeFooBar ({foo} as model) =
 ```
 
 See this [post](https://medium.com/elm-shorts/intro-to-records-in-elm-51bc5e933a57)
-
 
 ### Where are the `Cmd` and `Sub` types defined?
 
@@ -496,7 +453,7 @@ The point of this bag of commands is that you can gather all the things that nee
 [^cmd-vs-task]: From Evan's #elm-dev Slack posting, 2016-05-16.
 
 If you need to do any kind of chaining stuff, use `Task`, and don't turn your task chain into a `Cmd` until you have no more chaining stuff to do.
-This is why APIs generally expose `Task` instances rather than `Cmd`:  so you can do all the chaining you like, and you're in charge of finishing the job and turning whatever chain you've constructed into a `Cmd`.[^task-chaining]
+This is why APIs generally expose `Task` instances rather than `Cmd`: so you can do all the chaining you like, and you're in charge of finishing the job and turning whatever chain you've constructed into a `Cmd`.[^task-chaining]
 
 [^task-chaining]: From rtfeldman's #elm-dev Slack posting, 2016-05-16.
 
@@ -517,6 +474,7 @@ Typically, on the page where you want to do the navigation (say on clicking a bu
 ```
     button [ onClick (NavigateTo Route.SomeRoute) ] [ text "go" ]
 ```
+
 and in your `update`:
 
 ```
@@ -537,20 +495,19 @@ You only need to define a `NavigateTo` update branch as outlined above, wherever
 
 **Why does this work?**
 
-The handling of URL changes within your app is already defined at the top level through [`Browser.application`](https://package.elm-lang.org/packages/elm/browser/latest/Browser#application) (which adds an implicit subscription). So `replaceUrl` and `newUrl` don't call a certain message when they are done.  It works regardless of the concrete `Cmd Msg` type of your update, because `Cmd msg` satisfies _any_ `Msg` type. (Similar to how you can use generic `Html msg` in any `Html Msg` context.)
+The handling of URL changes within your app is already defined at the top level through [`Browser.application`](https://package.elm-lang.org/packages/elm/browser/latest/Browser#application) (which adds an implicit subscription). So `replaceUrl` and `newUrl` don't call a certain message when they are done. It works regardless of the concrete `Cmd Msg` type of your update, because `Cmd msg` satisfies _any_ `Msg` type. (Similar to how you can use generic `Html msg` in any `Html Msg` context.)
 
 Here are some more in depth resources on URL parsing and navigation.
 
-  - The [Elm SPA example](https://rtfeldman/elm-spa-example) follows the pattern described here, see for example the Editor page.
-  - [Choosing the right Elm SPA Architecture](https://medium.com/elm-shorts/choosing-the-right-elm-spa-architecture-d6e8275f6899)
-  - [More on SPA navigation in Elm: Keep current page and browser bar in sync, and add data to routes](https://medium.com/elm-shorts/more-on-spa-navigation-in-elm-31a066c6b9ae)
-
+- The [Elm SPA example](https://rtfeldman/elm-spa-example) follows the pattern described here, see for example the Editor page.
+- [Choosing the right Elm SPA Architecture](https://medium.com/elm-shorts/choosing-the-right-elm-spa-architecture-d6e8275f6899)
+- [More on SPA navigation in Elm: Keep current page and browser bar in sync, and add data to routes](https://medium.com/elm-shorts/more-on-spa-navigation-in-elm-31a066c6b9ae)
 
 ### What is the recommended way to organize modules, file system structure, etc.?
 
 There is not one definitive way to do it. Generally, a module in Elm is organized around a data structure relevant to the domain rather than abstracted functions (such as putting all your view or update functions together). See [Evan's recommendations here](https://www.reddit.com/r/elm/comments/69hwta/can_i_split_my_code_into_viewmodelupdate_folders/dh6szt9/).
 
-  > I suspect the heart of a great module in Elm is a data structure. A type or type alias that represents some important and coherent concept. From there, you have functions for working with that data structure. A good test for which functions to include might be to ask: does this function make sense if I only read this module?
+> I suspect the heart of a great module in Elm is a data structure. A type or type alias that represents some important and coherent concept. From there, you have functions for working with that data structure. A good test for which functions to include might be to ask: does this function make sense if I only read this module?
 
 For a more detailed approach to code organization for Single Page Applications (SPAs), check out [NoRedInk's style guide](https://github.com/NoRedInk/elm-style-guide).
 
@@ -565,13 +522,12 @@ See the [Elm-community Manifesto](https://github.com/elm-community/Manifesto#man
 It's just a name, not an acronym, and it's not capitalized as "ELM" either.
 See this [elm-discuss message](https://groups.google.com/forum/#!msg/elm-discuss/S4zbHJWPXvU/JyavEHDDQucJ) for Evan's explanation of the name.[^elm-name]
 
-[^elm-name]: But I still think it's an anagram of *E*van's *ML*. [FCY]
+[^elm-name]: But I still think it's an anagram of *E*van's _ML_. [FCY]
 
 ### Can I upload a Native module to the package repository?
 
 No, you cannot. The rationale for that policy is explained in this Google groups thread about the [Foundation for planning "native" APIs in 0.17](https://groups.google.com/forum/#!msg/elm-dev/1JW6wknkDIo/H9ZnS71BCAAJ)
 and in this later followup thread about [Reframing "native" code as "kernel" code](https://groups.google.com/forum/#!msg/elm-dev/bAHD_8PbgKE/X-z67wTdCAAJ).
 Those are linked from a Reddit post about [An explanation of Elm's policy on "native code"](https://www.reddit.com/r/elm/comments/73ubxo/an_explanation_of_elms_policy_on_native_code/).
-
 
 ## Notes
