@@ -106,13 +106,9 @@ You can compile multiple modules into a single elm.js and then instantiate whate
 
 and then use them like this:
 
-    var headernode = document.getElementById('header');
-    var footernode = document.getElementById('footer');
-    var loginnode = document.getElementById('login');
-
-    Elm.Header.embed(headernode);
-    Elm.Footer.embed(footernode);
-    Elm.Login.embed(loginnode);
+    var header = Elm.Main.init({ node: document.getElementById('header') });
+    var login  = Elm.Main.init({ node: document.getElementById('login') });
+    var footer = Elm.Main.init({ node: document.getElementById('footer') });
 
 [^multiplemodules]:
 
