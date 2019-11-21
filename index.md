@@ -38,12 +38,6 @@ You need to install the Html module:
 
 Several modules are [available by default](https://package.elm-lang.org/packages/elm/core/latest/) in the base Elm tools but other common modules like Html have to be installed in the working directory before they can be used in elm make, elm repl, and elm reactor.
 
-### Why does elm repl report a syntax problem for any type annotation, such as for `fib : Int -> Int`?
-
-elm repl does not support type annotations at all. If you try you'll see a "syntax problem" message saying something like "I ran into something unexpected when parsing your code!" and pointing to the colon.
-
-To use type annotations you will have to use elm reactor or [Ellie](https://ellie-app.com), or build and run a complete app.
-
 ### How do I know what package name to use for `elm install`?
 
 Search on [package.elm-lang.org](https://package.elm-lang.org/) for the module name and use the package name that you find there.
