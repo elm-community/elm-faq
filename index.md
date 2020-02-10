@@ -115,7 +115,7 @@ and then use them like this:
 No, that is just a convention. Any module that binds `main` to a value of type `Program Never` can be an entry point to an Elm program.
 
 For example, if both Foo.elm and Bar.elm contain an appropriate binding of `main`,
-compiling via `elm make Foo.elm Bar.elm \-\-output elm.js` creates an elm.js file
+compiling via `elm make Foo.elm Bar.elm --output=elm.js` creates an elm.js file
 such that both `Elm.Foo.embed(someElement)` and
 `Elm.Bar.embed(someOtherElement)` can be used from the same HTML file.
 
