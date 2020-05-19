@@ -226,7 +226,7 @@ import Html.Attributes exposing (..)
 
 withStyle html =
   div []
-  [ node "style" [type' "text/css"]
+  [ node "style" [type_ "text/css"]
     [text "@import url(https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.min.css)"]
   , html
   ]
