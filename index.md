@@ -4,13 +4,13 @@ layout: page
 ---
 
 **This page is mostly for folks _learning_ Elm.** It aggregates questions that are commonly
-asked on [the Slack channel][slack], [the IRC channel][irc], or [the mailing list][list].
+asked on [the Slack channel][slack], [the IRC channel][irc], or [Discourse][discourse].
 Those are all friendly and helpful places to go if you do not find the answer to your
 question here!
 
 [slack]: http://elmlang.herokuapp.com/
 [irc]: http://webchat.freenode.net/?channels=elm
-[list]: https://groups.google.com/forum/#!forum/elm-discuss
+[discourse]: https://discourse.elm-lang.org/
 
 - Contributions to [this document](https://github.com/elm-community/elm-faq)
   are welcome!
