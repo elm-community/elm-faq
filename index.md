@@ -119,12 +119,6 @@ compiling via `elm make Foo.elm Bar.elm --output=elm.js` creates an elm.js file
 such that both `Elm.Foo.init({ node: someElement })` and
 `Elm.Bar.init({ node: someOtherElement })` can be used from the same HTML file.
 
-### Why doesn't the Elm compiler find the Native code in a module that I cloned from github?
-
-To use native code not installed by `elm package` you need to add this to your elm.json file:
-
-    "native-modules": true,
-
 ### Why, when I import a module that defines a type, does the compiler know about the type name but not its constructors?
 
 You need to import the module in one of the following ways:
@@ -164,7 +158,7 @@ That can happen when switching between elm versions. Try removing all of elm-stu
 
 ### How do I install an Elm package that has not been published to packages.elm-lang.org for use in my project?
 
-Clone the package into a separate directory and add its directory path to the `source-directories` section of the elm.json file for your project. As usual, you will also have to install any dependencies of the package. If the package includes any native javascript code you will have to also add `native-modules: true` to elm.json. In 0.17 onwards, you will also need to edit the Native files so that any references to `_user$project$module` will be replaced with `_your_user$your_project$module`.
+Clone the package into a separate directory and add its directory path to the `source-directories` section of the elm.json file for your project. As usual, you will also have to install any dependencies of the package.
 
 ### How can I parse Json into Elm data?
 
@@ -401,12 +395,6 @@ They are defined in the core
 and
 [Platform.Sub](https://package.elm-lang.org/packages/elm/core/latest/Platform-Sub)
 modules.
-
-### What is this `! []` construct in the code?
-
-The `!` operator is defined as a convenience function in the [Platform-Cmd](http://package.elm-lang.org/packages/elm-lang/core/latest/Platform-Cmd#!) module.
-
-Called as `model ! listOfCmds` it returns the `(model, cmd)` value needed as the return value of an `update` function.
 
 ### What is the difference between `Cmd Msg` and `Cmd msg`?
 
