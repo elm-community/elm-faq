@@ -4,18 +4,18 @@ layout: page
 ---
 
 **This page is mostly for folks _learning_ Elm.** It aggregates questions that are commonly
-asked on [the Slack channel][slack], [the IRC channel][irc], or [the mailing list][list].
+asked on [the Slack channel][slack], [the IRC channel][irc], or [Discourse][discourse].
 Those are all friendly and helpful places to go if you do not find the answer to your
 question here!
 
 [slack]: http://elmlang.herokuapp.com/
 [irc]: http://webchat.freenode.net/?channels=elm
-[list]: https://groups.google.com/forum/#!forum/elm-discuss
+[discourse]: https://discourse.elm-lang.org/
 
 - Contributions to [this document](https://github.com/elm-community/elm-faq)
   are welcome!
 
-- This document is about the current version of Elm (0.19). See also the
+- This document is about the current version of Elm (0.19 / 0.19.1). See also the
   [Elm 0.17 FAQ](17.html) about upgrading to Elm 0.17. See the [Elm 0.16 FAQ](16.html)
   about that older version of Elm.
 
@@ -36,7 +36,7 @@ You need to install the Html module:
 
     elm install elm/html
 
-Several modules are [available by default](https://package.elm-lang.org/packages/elm/core/latest/) in the base Elm tools but other common modules like Html have to be installed in the working directory before they can be used in elm make, elm repl, and elm reactor.
+Several modules are [available by default](https://package.elm-lang.org/packages/elm/core/latest/) in the base Elm tools but other common modules like Html have to be installed in the working directory before they can be used in `elm make`, `elm repl`, and `elm reactor`.
 
 ### How do I know what package name to use for `elm install`?
 
@@ -77,7 +77,7 @@ See [issue #172](https://github.com/elm/html/issues/172) for discussion of the i
 
 ### What does `()` mean?
 
-It is the empty tuple or [unit type](https://en.wikipedia.org/wiki/Unit_type). It serves much like "void", "null", or "None" in other languages.
+It is the empty tuple or [unit type](https://en.wikipedia.org/wiki/Unit_type). It serves much like `void`, `null`, or `None` in other languages.
 
 ### What good is the `<|` operator if it is just function application?
 
@@ -119,12 +119,6 @@ compiling via `elm make Foo.elm Bar.elm --output=elm.js` creates an elm.js file
 such that both `Elm.Foo.init({ node: someElement })` and
 `Elm.Bar.init({ node: someOtherElement })` can be used from the same HTML file.
 
-### Why doesn't the Elm compiler find the Native code in a module that I cloned from github?
-
-To use native code not installed by `elm package` you need to add this to your elm.json file:
-
-    "native-modules": true,
-
 ### Why, when I import a module that defines a type, does the compiler know about the type name but not its constructors?
 
 You need to import the module in one of the following ways:
@@ -164,7 +158,7 @@ That can happen when switching between elm versions. Try removing all of elm-stu
 
 ### How do I install an Elm package that has not been published to packages.elm-lang.org for use in my project?
 
-Clone the package into a separate directory and add its directory path to the `source-directories` section of the elm.json file for your project. As usual, you will also have to install any dependencies of the package. If the package includes any native javascript code you will have to also add `native-modules: true` to elm.json. In 0.17 onwards, you will also need to edit the Native files so that any references to `_user$project$module` will be replaced with `_your_user$your_project$module`.
+Clone the package into a separate directory and add its directory path to the `source-directories` section of the elm.json file for your project. As usual, you will also have to install any dependencies of the package.
 
 ### How can I parse Json into Elm data?
 
@@ -272,23 +266,23 @@ The Elm language does not allow for defining our own super-types.
 
 [^compappend]: There is also `compappend` in the compiler but it does not appear to be exposed for use.
 
-The `number` type comprises Int and Float.
+The `number` type comprises `Int` and `Float`.
 
-The `comparable` type comprises Int, Float, Char, String, List, and tuples[^tuple_compare].
+The `comparable` type comprises `Int`, `Float`, `Char`, `String`, `List`, and tuples[^tuple_compare].
 
 [^tuple_compare]: Tuple comparison is supported only for tuples with 6 or fewer entries.
 
-The `appendable` type comprises String, List, and text[^text_append].
+The `appendable` type comprises `String`, `List`, and `text`[^text_append].
 
-[^text_append]: The compiler error messages refer to "text" being appendable; not sure what "text" means though. [FCY]
+[^text_append]: The compiler error messages refer to `text` being appendable; not sure what `text` means though. [FCY]
 
-When declaring types the names "number", and "comparable" and "appendable" serve as prefixes. For example, a function declared as
+When declaring types the names `number`, `comparable` and `appendable` serve as prefixes. For example, a function declared as
 
 ```haskell
 f : number -> number -> String
 ```
 
-means that `f` can take two Int values and return a String, or two Float values and return a String. It cannot take a combination of Int and Float though; the actual types have to be consistent.
+means that `f` can take two `Int` values and return a `String`, or two `Float` values and return a `String`. It cannot take a combination of `Int` and `Float` though; the actual types have to be consistent.
 
 However, if declared as
 
@@ -296,7 +290,7 @@ However, if declared as
 f : number1 -> number2 -> String
 ```
 
-then it can also take an Int and a Float and return a String, or take a Float and an Int and return a String. The prefix gives the super-type that constrains the corresponding particular argument. The full super-type name, special prefix plus arbitrary (optional) suffix, determines whether the actual types have to be consistent.
+then it can also take an `Int` and a `Float` and return a `String`, or take a `Float` and an `Int` and return a `String`. The prefix gives the super-type that constrains the corresponding particular argument. The full super-type name, special prefix plus arbitrary (optional) suffix, determines whether the actual types have to be consistent.
 
 #### Why doesn't Elm have user-defined typeclasses?
 
@@ -402,12 +396,6 @@ and
 [Platform.Sub](https://package.elm-lang.org/packages/elm/core/latest/Platform-Sub)
 modules.
 
-### What is this `! []` construct in the code?
-
-The `!` operator is defined as a convenience function in the [Platform-Cmd](http://package.elm-lang.org/packages/elm-lang/core/latest/Platform-Cmd#!) module.
-
-Called as `model ! listOfCmds` it returns the `(model, cmd)` value needed as the return value of an `update` function.
-
 ### What is the difference between `Cmd Msg` and `Cmd msg`?
 
 `Cmd Msg` is a type of command where the resulting messages are of type `Msg`.
@@ -420,7 +408,7 @@ Any module using ports must start with `port module` on the first line.
 
 ### How do I generate a new message as a command?
 
-The following function constructs a Cmd value from a message:
+The following function constructs a `Cmd` value from a message:
 
 ```haskell
 message : msg -> Cmd msg
@@ -432,7 +420,7 @@ However, this is often unnecessary. To handle a message produced by a call to `u
 
 The latter approach is likely to be more efficient in most cases. The former option may be attractive when recursive calls to `update` could cause an infinite loop, or for authors of reusable components interested in creating a clean encapsulation of their library's internal behavior.
 
-### What is the difference between Cmd and Task?
+### What is the difference between `Cmd` and `Task`?
 
 - `Cmd` is just a bag (i.e. multiset) of chunks of data. It is a functor, but it is not applicative or monadic. This means all you can do is apply a function to all the entries in the bag with `map` and add to the bag with `batch`.
 
@@ -457,7 +445,7 @@ This is a known issue or set of issues, see discussion and workarounds [here](ht
 
 ### How do I navigate to a new route from within a nested view, for example from a page view rather than the top level of my app?
 
-The [elm/browser/Browser.Navigation](https://package.elm-lang.org/packages/elm/browser/latest/Browser-Navigation) module is the standard for managing browser navigation from within Elm. For changing the URL, you can either use `newUrl` (which adds to the browser's history) or `replaceUrl` (which doesn't). In either case, you pass it the new URL (String), and get back a `Cmd msg`.
+The [elm/browser/Browser.Navigation](https://package.elm-lang.org/packages/elm/browser/latest/Browser-Navigation) module is the standard for managing browser navigation from within Elm. For changing the URL, you can either use `newUrl` (which adds to the browser's history) or `replaceUrl` (which doesn't). In either case, you pass it the new URL (`String`), and get back a `Cmd msg`.
 
 Typically, on the page where you want to do the navigation (say on clicking a button), you will have
 
